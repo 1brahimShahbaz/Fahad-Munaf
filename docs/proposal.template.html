@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Website Development Proposal — Sir Fahad Munaf Parekh</title>
+<style>
+  :root{
+    --navy:#1B2145;
+    --navy-700:#283060;
+    --gold:#F8A830;
+    --gold-700:#A66300;
+    --cream:#FFFAF2;
+    --ink:#131834;
+    --muted:#5b6072;
+    --line:#e4e2dd;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{
+    margin:0;
+    background:#f3f2ef;
+    color:var(--ink);
+    font:15px/1.65 "Segoe UI",-apple-system,Roboto,Helvetica,Arial,sans-serif;
+  }
+  .page{
+    max-width:820px;margin:32px auto;background:#fff;
+    box-shadow:0 8px 40px rgba(0,0,0,.10);
+  }
+
+  /* ---------- masthead ---------- */
+  .masthead{background:var(--navy);color:#fff;padding:38px 52px 32px}
+  .masthead img{height:52px;width:auto;display:block;margin-bottom:26px}
+  .masthead h1{margin:0;font-size:31px;line-height:1.15;font-weight:700;letter-spacing:-.4px}
+  .masthead .for{margin:12px 0 0;font-size:16px;color:rgba(255,255,255,.88)}
+  .masthead .date{margin:4px 0 0;font-size:13px;color:rgba(255,255,255,.55)}
+  .rule{height:4px;background:linear-gradient(90deg,var(--gold) 0%,var(--gold) 55%,var(--navy-700) 55%)}
+
+  .body{padding:40px 52px 52px}
+
+  h2{
+    font-size:20px;margin:40px 0 6px;color:var(--navy);font-weight:700;
+    padding-bottom:9px;border-bottom:2px solid var(--line);letter-spacing:-.2px;
+  }
+  h2:first-child{margin-top:0}
+  h3{font-size:15px;margin:24px 0 6px;color:var(--gold-700);font-weight:700}
+  p{margin:9px 0}
+  .lede{color:var(--muted);margin-bottom:6px}
+  ul{margin:8px 0 8px 0;padding-left:20px}
+  li{margin:5px 0}
+  .note{
+    color:var(--muted);font-size:13.5px;font-style:italic;
+    border-left:3px solid var(--line);padding-left:12px;margin:12px 0;
+  }
+
+  table{width:100%;border-collapse:collapse;margin:14px 0 6px;font-size:14.5px}
+  th{
+    background:var(--navy);color:#fff;text-align:left;padding:11px 14px;
+    font-weight:600;font-size:13px;letter-spacing:.4px;text-transform:uppercase;
+  }
+  th:last-child,td:last-child{text-align:right}
+  td{padding:11px 14px;border-bottom:1px solid var(--line)}
+  tr:nth-child(even) td{background:#faf9f7}
+  .total td{
+    background:var(--cream)!important;font-weight:700;color:var(--navy);
+    border-top:2px solid var(--gold);border-bottom:none;font-size:15.5px;
+  }
+  .price{font-weight:700;color:var(--navy);white-space:nowrap}
+  .free{color:#15803d;font-weight:700}
+
+  .done{list-style:none;padding-left:0}
+  .done li{padding-left:26px;position:relative}
+  .done li::before{
+    content:"✓";position:absolute;left:0;top:0;color:#15803d;font-weight:700;
+  }
+  .todo{list-style:none;padding-left:0}
+  .todo li{padding-left:26px;position:relative}
+  .todo li::before{
+    content:"";position:absolute;left:2px;top:8px;width:9px;height:9px;
+    border:1.5px solid var(--gold);border-radius:2px;
+  }
+
+  .callout{
+    background:var(--cream);border:1px solid #efe6d6;border-left:4px solid var(--gold);
+    padding:16px 20px;margin:18px 0;border-radius:0 6px 6px 0;
+  }
+  .callout strong{color:var(--navy)}
+
+  .foot{
+    margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
+    color:var(--muted);font-size:13px;font-style:italic;
+  }
+  .confidential{
+    background:var(--navy-700);color:rgba(255,255,255,.62);
+    padding:10px 52px;font-size:11px;letter-spacing:.6px;text-transform:uppercase;
+  }
+
+  @page{margin:14mm}
+  @media print{
+    body{background:#fff}
+    .page{margin:0;max-width:none;box-shadow:none}
+    h2{break-after:avoid}
+    table,ul,.callout{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="masthead">
+    <img src="__LOGO__" alt="Economics by Fahad Munaf Parekh" />
+    <h1>Website Development Proposal</h1>
+    <p class="for">Prepared for: Sir Fahad Munaf Parekh — Economics Educator</p>
+    <p class="date">September 2026</p>
+  </div>
+  <div class="rule"></div>
+
+  <div class="body">
+
+    <h2>Section 1: Content &amp; Materials</h2>
+    <p class="lede">
+      Development is already underway using the materials shared so far. This
+      section records what has been received and what is still needed to
+      complete the site.
+    </p>
+
+    <h3>1.1 Already provided — in place on the site</h3>
+    <ul class="done">
+      <li><strong>Brand logo</strong> — used across the header, footer, favicons and social preview card</li>
+      <li><strong>Classroom photographs</strong> — 10 images, powering the homepage banners and the gallery</li>
+      <li><strong>Affiliation logos</strong> — 9 institutions, grouped into morning and evening teaching blocks</li>
+      <li><strong>YouTube channel</strong> — 200+ recorded lectures pulled in automatically (see 3.2)</li>
+      <li><strong>Admissions announcement video</strong> and 7 short clips for the homepage</li>
+      <li><strong>Social media profiles</strong> — YouTube, Facebook, Instagram and WhatsApp</li>
+    </ul>
+
+    <h3>1.2 Still required to finish</h3>
+    <ul class="todo">
+      <li><strong>Study notes</strong> — AS Level, A2 Level and O Level. PDF, Word or scanned PDF all work. These populate the Notes section.</li>
+      <li><strong>Professional photographs of Sir Fahad</strong> — 3 to 5 images, plain or professional background. Used on the About page and as the social sharing image.</li>
+      <li><strong>Student testimonials</strong> — written quotes or short video clips.</li>
+      <li><strong>Verified teaching figures</strong> — years of experience, students taught, and result statistics. These appear as counters on the About page and must be accurate before launch.</li>
+      <li><strong>Contact details</strong> — the email address and WhatsApp number to publish.</li>
+      <li><strong>Institution website links</strong> — for the affiliation logos, so each can link through.</li>
+    </ul>
+
+    <h2>Section 2: Domain &amp; Hosting</h2>
+    <p class="lede">
+      These are paid directly to the hosting provider, not to the developer.
+      Registering both in Sir Fahad&rsquo;s own name keeps full ownership and
+      long-term control of the domain.
+    </p>
+
+    <table>
+      <thead>
+        <tr><th>Item</th><th>Cost (PKR)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>.COM domain — 1 year</td><td class="price">Rs 2,849</td></tr>
+        <tr><td>1 GB hosting — 1 year</td><td class="price">Rs 1,299</td></tr>
+        <tr><td>SSL certificate (HTTPS security)</td><td class="free">Free</td></tr>
+        <tr class="total"><td>Total — first year</td><td>Rs 4,148</td></tr>
+      </tbody>
+    </table>
+
+    <p class="note">
+      This is a yearly cost, not monthly. Renewal is due after twelve months and
+      the .COM renewal rate may differ slightly from the first-year price.
+    </p>
+
+    <div class="callout">
+      <strong>Domain name.</strong> A personal-name domain such as
+      <strong>fahadmunafparekh.com</strong> builds the strongest personal brand
+      and is easiest for students to recall. A shorter alternative like
+      economicsbyfmp.com is also available. The final choice is yours — please
+      confirm it so the site can be pointed at the live address.
+    </div>
+
+    <h2>Section 3: Website Development</h2>
+
+    <h3>3.1 Developer&rsquo;s fee</h3>
+    <table>
+      <thead>
+        <tr><th>Service</th><th>Cost (PKR)</th></tr>
+      </thead>
+      <tbody>
+        <tr class="total"><td>Full website design &amp; development (one-time)</td><td>Rs 50,000</td></tr>
+      </tbody>
+    </table>
+
+    <h3>3.2 What the fee covers</h3>
+    <p>
+      A professional, full-featured website of this scope in Pakistan — built
+      with modern technology such as Next.js and Tailwind CSS — typically ranges
+      from PKR 80,000 to PKR 150,000. This is offered at a one-time
+      <strong>PKR 50,000</strong> out of genuine respect for Sir Fahad&rsquo;s
+      work as a teacher.
+    </p>
+    <ul>
+      <li><strong>Custom design</strong> built around the FMP logo — full navy and gold palette, generated favicons and social preview card</li>
+      <li><strong>All pages</strong> — Home, AS Level, A2 Level, O Level, About, Notes, Blog, Extra Credit, Contact and Enrolment</li>
+      <li><strong>Automatic lecture library</strong> — 200+ YouTube lectures organised by level, then Microeconomics / Macroeconomics, then topic series. Synced straight from the channel through the YouTube Data API, so new uploads need no manual work</li>
+      <li><strong>Notes library</strong> — in-browser preview, watermarked and non-downloadable, with the full pack requested over WhatsApp</li>
+      <li><strong>WhatsApp integration throughout</strong> — every enrolment and resource request opens a chat with the message already written</li>
+      <li><strong>Enrolment form</strong> delivering submissions to a private Google Sheet</li>
+      <li><strong>Blog system</strong> for publishing articles</li>
+      <li><strong>Technical SEO setup</strong> — meta tags, structured data for every lecture, sitemap and Google Search Console readiness</li>
+      <li><strong>Mobile-responsive</strong> across phone, tablet and desktop</li>
+      <li><strong>Deployment</strong> on the purchased hosting, plus handover and a walkthrough</li>
+    </ul>
+
+    <h2>Section 4: Cost Summary</h2>
+    <table>
+      <thead>
+        <tr><th>Item</th><th>Cost (PKR)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Website development — one-time, paid to developer</td><td class="price">Rs 50,000</td></tr>
+        <tr><td>Domain + hosting — yearly, paid to provider</td><td class="price">Rs 4,148</td></tr>
+        <tr class="total"><td>Total to launch</td><td>Rs 54,148</td></tr>
+      </tbody>
+    </table>
+
+    <p class="note">
+      The PKR 50,000 is a one-time fee. Only the PKR 4,148 domain and hosting
+      recurs, once a year.
+    </p>
+
+    <p class="foot">
+      For any questions or clarifications regarding this proposal, please feel
+      free to reach out. I look forward to delivering a website that reflects
+      Sir Fahad Munaf Parekh&rsquo;s dedication and excellence as an Economics
+      educator.
+    </p>
+  </div>
+
+  <div class="confidential">Confidential — For Sir Fahad Munaf Parekh only</div>
+</div>
+</body>
+</html>

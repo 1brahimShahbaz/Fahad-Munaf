@@ -1,0 +1,690 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+    max-width: 100%;
+    /* Brand-tinted scrollbars (Chrome 121+, Firefox; Safari keeps overlay default) */
+    scrollbar-color: rgba(27, 33, 69, 0.35) transparent;
+  }
+
+  body {
+    @apply bg-surface text-ink-900 font-inter antialiased;
+    font-feature-settings: "ss01", "cv11";
+    overflow-x: clip;
+    max-width: 100%;
+  }
+
+  a:not([class*="btn-"]) {
+    @apply transition-colors duration-300 ease-smooth;
+  }
+
+  [id] {
+    scroll-margin-top: 6.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    [id] {
+      scroll-margin-top: 6.5rem;
+    }
+  }
+
+  ::selection {
+    background-color: #f8a830;
+    color: #1b2145;
+  }
+
+  *:focus-visible {
+    @apply outline-none ring-2 ring-gold-500 ring-offset-2 ring-offset-white rounded-sm;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-eyebrow font-inter font-semibold uppercase tracking-eyebrow text-gold-500;
+  }
+
+  .container-x {
+    @apply mx-auto w-full max-w-[1280px] px-6 md:px-8 lg:px-12;
+  }
+
+  .h-display {
+    @apply font-display font-semibold leading-[1.05] tracking-[-0.02em];
+  }
+
+  .card-rest {
+    @apply shadow-card-rest transition-all duration-300 ease-smooth;
+  }
+  .card-rest:hover {
+    @apply -translate-y-1 shadow-card-hover;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center whitespace-nowrap justify-center gap-2 rounded-full bg-gold-500 px-7 py-3.5 font-inter font-semibold text-navy-900 shadow-cta-glow-sm transition-all duration-300 ease-smooth hover:-translate-y-0.5 hover:bg-gold-300 hover:shadow-cta-glow active:translate-y-0 active:scale-[0.98] focus-visible:ring-gold-500;
+  }
+
+  .btn-outline-navy {
+    @apply inline-flex items-center whitespace-nowrap justify-center gap-2 rounded-full border-[1.5px] border-navy-900 bg-transparent px-7 py-3.5 font-inter font-semibold text-navy-900 transition-all duration-300 ease-smooth hover:bg-navy-900 hover:text-white active:scale-[0.98];
+  }
+
+  .btn-outline-white {
+    @apply inline-flex items-center whitespace-nowrap justify-center gap-2 rounded-full border-[1.5px] border-white/80 bg-transparent px-7 py-3.5 font-inter font-semibold text-white transition-all duration-300 ease-smooth hover:bg-white hover:text-navy-900 active:scale-[0.98];
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center whitespace-nowrap justify-center gap-2 rounded-full bg-whatsapp px-6 py-3 font-inter font-semibold text-white shadow-[0_8px_24px_rgba(37,211,102,0.35)] transition-all duration-300 ease-smooth hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98];
+  }
+
+  .footer-link {
+    @apply inline-block text-sm text-white/80 transition-all duration-300 ease-smooth hover:translate-x-0.5 hover:text-gold-500;
+  }
+
+  .section-title-line {
+    @apply h-1 w-16 rounded-full bg-gradient-to-r from-transparent via-gold-500 to-transparent;
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider2;
+  }
+
+  .pill-gold {
+    @apply pill bg-gold-500 text-navy-900;
+  }
+
+  .pill-gold-outline {
+    @apply pill border border-gold-500/40 bg-gold-500/10 text-gold-500;
+  }
+
+  .pill-navy {
+    @apply pill bg-navy-900 text-white;
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border-[1.5px] border-gray-200 bg-white px-4 py-3.5 font-inter text-base text-ink-900 transition-all placeholder:text-gray-500 focus:border-gold-500 focus:outline-none focus:ring-2 focus:ring-gold-500/20;
+  }
+
+  .label-mini {
+    @apply mb-1.5 block text-[11px] font-semibold uppercase tracking-wider2 text-gray-500;
+  }
+
+  /* ---------------------------------------------------------------- *
+   * Header. Two states: over the hero it is fully transparent so the
+   * banner reads as the header's own background; past the fold it
+   * resolves to frosted white. Only the homepage has a dark hero, so
+   * every other route uses the solid state from the start.
+   * ---------------------------------------------------------------- */
+
+  .site-header--solid {
+    @apply border-b border-gray-200/70 bg-white/85 backdrop-blur-xl shadow-header-scrolled;
+  }
+
+  .site-header--transparent {
+    @apply border-b border-transparent bg-transparent;
+  }
+
+  /* Active-page marker: a short gold rule under the label, grown from the
+     centre. Replaces the old cream pill rail. */
+  .nav-link::after {
+    content: "";
+    @apply absolute inset-x-1 -bottom-0.5 h-[2px] origin-center scale-x-0 rounded-full bg-gold-500 transition-transform duration-300 ease-smooth;
+  }
+  .nav-link:hover::after,
+  .nav-link[data-active="true"]::after {
+    @apply scale-x-100;
+  }
+
+  /* ---------------------------------------------------------------- *
+   * Hard-stop gradients. Same navy/gold palette as everything else —
+   * the contrast comes from abrupt colour stops rather than new hues.
+   * ---------------------------------------------------------------- */
+
+  /** Deep navy sweep with a sharp lift toward navy-500. */
+  .grad-navy-hard {
+    background-image: linear-gradient(
+      135deg,
+      #1b2145 0%,
+      #1b2145 38%,
+      #283060 38%,
+      #283060 68%,
+      #3b4780 68%,
+      #3b4780 100%
+    );
+  }
+
+  /** Gold band with a crisp break — for CTAs and accent chips. */
+  .grad-gold-hard {
+    background-image: linear-gradient(
+      120deg,
+      #f8a830 0%,
+      #f8a830 42%,
+      #fbc470 42%,
+      #fbc470 62%,
+      #f8a830 62%,
+      #f8a830 100%
+    );
+  }
+
+  /** Gold spotlight thrown across a navy surface. */
+  .grad-gold-spot {
+    background-image:
+      radial-gradient(
+        ellipse 70% 90% at 88% 0%,
+        rgba(248, 168, 48, 0.28),
+        rgba(248, 168, 48, 0) 62%
+      ),
+      radial-gradient(
+        ellipse 60% 80% at 0% 100%,
+        rgba(59, 71, 128, 0.55),
+        rgba(59, 71, 128, 0) 60%
+      );
+  }
+
+  /** 3px hard rule: navy → gold → navy. Sits on a section's top edge. */
+  .edge-gold-hard {
+    @apply relative;
+  }
+  .edge-gold-hard::before {
+    content: "";
+    @apply pointer-events-none absolute inset-x-0 top-0 h-[3px];
+    background-image: linear-gradient(
+      90deg,
+      #1b2145 0%,
+      #1b2145 22%,
+      #f8a830 22%,
+      #f8a830 50%,
+      #fbc470 50%,
+      #fbc470 78%,
+      #1b2145 78%,
+      #1b2145 100%
+    );
+  }
+
+  /** Gold gradient clipped to text — for a single emphasised word. */
+  .text-grad-gold {
+    background-image: linear-gradient(100deg, #f8a830 0%, #fbc470 55%, #f8a830 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* The wordmark is full colour and ships in a light variant for dark
+     backgrounds, so it needs no CSS tinting — see components/shared/Logo.tsx. */
+
+  .bg-grid-white {
+    background-color: #ffffff;
+    background-image:
+      linear-gradient(rgba(248, 168, 48, 0.09) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(248, 168, 48, 0.09) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .bg-grid-gray {
+    background-color: #f8f9fb;
+    background-image:
+      linear-gradient(rgba(248, 168, 48, 0.09) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(248, 168, 48, 0.09) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .bg-grid-overlay {
+    background-image:
+      linear-gradient(rgba(248, 168, 48, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(248, 168, 48, 0.1) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .bg-grid-blue {
+    background-color: #e9ebf5;
+    background-image:
+      radial-gradient(
+        ellipse 80% 60% at 50% 0%,
+        rgba(59, 71, 128, 0.12),
+        rgba(59, 71, 128, 0) 70%
+      ),
+      linear-gradient(rgba(27, 33, 69, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(27, 33, 69, 0.08) 1px, transparent 1px);
+    background-size: auto, 56px 56px, 56px 56px;
+  }
+
+  .logo-darkmode {
+    filter: invert(1) hue-rotate(180deg);
+    transition: filter 0.35s ease, transform 0.35s ease;
+  }
+
+  .reels-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .reels-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .text-shadow-sm {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Home hero carousel — avoid 100vw (scrollbar/layout shift); horizontal swipe needs pan-x */
+  .hero-embla__viewport {
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .hero-embla__container {
+    display: flex;
+    touch-action: pan-x pinch-zoom;
+    backface-visibility: hidden;
+  }
+
+  .hero-embla__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* +5rem / +6rem over the old 560/640: the hero now starts underneath the
+     fixed header, so it has to be that much taller to keep the same visible
+     area below it. */
+  @media (min-width: 640px) {
+    .hero-embla__viewport {
+      min-height: 640px;
+    }
+
+    .hero-embla__slide {
+      min-height: 640px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-embla__viewport {
+      min-height: 736px;
+    }
+
+    .hero-embla__slide {
+      min-height: 736px;
+    }
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Custom cursor (components/layout/CustomCursor.tsx). The `fmp-cursor-on`
+ * class is added by JS after mount, so the native cursor is only ever
+ * hidden once the replacement is actually on screen.
+ * ------------------------------------------------------------------ */
+.fmp-cursor-dot,
+.fmp-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  pointer-events: none;
+  opacity: 0;
+  border-radius: 9999px;
+}
+
+.fmp-cursor-dot {
+  width: 7px;
+  height: 7px;
+  background: #f8a830;
+  box-shadow: 0 0 0 1px rgba(27, 33, 69, 0.18);
+  transition:
+    opacity 200ms ease,
+    width 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fmp-cursor-ring {
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid rgba(248, 168, 48, 0.7);
+  transition:
+    opacity 200ms ease,
+    width 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 220ms ease,
+    border-color 220ms ease;
+}
+
+.fmp-cursor-dot.is-visible,
+.fmp-cursor-ring.is-visible {
+  opacity: 1;
+}
+
+/* Over a link or button: the ring swells and fills, the dot shrinks away. */
+.fmp-cursor-ring.is-hovering {
+  width: 52px;
+  height: 52px;
+  border-color: #f8a830;
+  background-color: rgba(248, 168, 48, 0.16);
+}
+
+.fmp-cursor-dot.is-hovering {
+  width: 4px;
+  height: 4px;
+}
+
+.fmp-cursor-ring.is-pressed {
+  width: 26px;
+  height: 26px;
+  background-color: rgba(248, 168, 48, 0.3);
+}
+
+html.fmp-cursor-on,
+html.fmp-cursor-on body,
+html.fmp-cursor-on a,
+html.fmp-cursor-on button,
+html.fmp-cursor-on [role="button"],
+html.fmp-cursor-on summary,
+html.fmp-cursor-on label {
+  cursor: none;
+}
+
+/* Text fields keep the caret — and the ring gets out of the way. */
+html.fmp-cursor-text,
+html.fmp-cursor-text input,
+html.fmp-cursor-text textarea {
+  cursor: text;
+}
+
+html.fmp-cursor-text .fmp-cursor-dot,
+html.fmp-cursor-text .fmp-cursor-ring {
+  opacity: 0;
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .fmp-cursor-dot,
+  .fmp-cursor-ring {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Scroll reveals — driven by lib/reveal.ts (one shared
+ * IntersectionObserver). Only opacity + transform animate, so reveals stay
+ * on the compositor and never trigger layout or paint on the main thread.
+ * ------------------------------------------------------------------ */
+.motion-reveal {
+  opacity: 0;
+  transform: translate3d(var(--rv-x, 0), var(--rv-y, 0), 0)
+    scale(var(--rv-scale, 1));
+  transition:
+    opacity 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--rv-delay, 0ms);
+}
+
+.motion-reveal.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Above-the-fold: a keyframe that starts the moment the CSS parses, so the
+   hero paints without waiting for React to hydrate. */
+.motion-reveal-instant {
+  animation: fmp-reveal-in 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--rv-delay, 0ms);
+}
+
+@keyframes fmp-reveal-in {
+  from {
+    opacity: 0;
+    transform: translate3d(var(--rv-x, 0), var(--rv-y, 0), 0)
+      scale(var(--rv-scale, 1));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  /* Never hide content from users who opted out of motion. */
+  .motion-reveal,
+  .motion-reveal-instant {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .nav-link::after {
+    transition: none !important;
+  }
+
+  .fmp-marquee-track {
+    animation: none !important;
+  }
+
+  .animate-float-up,
+  .animate-float-up-slow {
+    animation: none !important;
+  }
+}
+
+/* ============================================================
+   Branded preloader — gold fills the FMP logo silhouette
+   ============================================================ */
+.fmp-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(
+      ellipse at center,
+      #283060 0%,
+      #1b2145 58%,
+      #11162f 100%
+    );
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.55s ease, visibility 0.55s ease;
+}
+
+.fmp-preloader--hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.fmp-preloader__stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+/* Box matches the wordmark's 383:175 aspect so the mask fills it edge to edge. */
+.fmp-preloader__logo {
+  --fmp-logo-size: 240px;
+  position: relative;
+  width: var(--fmp-logo-size);
+  height: calc(var(--fmp-logo-size) * 175 / 383);
+  -webkit-mask: url("/images/fmp-logo.png") center / contain no-repeat;
+  mask: url("/images/fmp-logo.png") center / contain no-repeat;
+  filter: drop-shadow(0 8px 26px rgba(248, 168, 48, 0.3));
+  animation: fmp-logo-pulse 2.4s ease-in-out infinite;
+}
+
+@media (min-width: 1024px) {
+  .fmp-preloader__logo {
+    --fmp-logo-size: 320px;
+  }
+}
+
+/* Faint "empty" silhouette under the gold fill */
+.fmp-preloader__base {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* The gold that rises to fill the logo */
+.fmp-preloader__fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0%;
+  background: linear-gradient(180deg, #fbc470 0%, #f8a830 55%, #dc8f1c 100%);
+  animation: fmp-fill 2.4s cubic-bezier(0.45, 0, 0.2, 1) infinite;
+}
+
+/* Liquid surface highlight that rides the top of the fill */
+.fmp-preloader__fill::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: rgba(255, 248, 232, 0.7);
+  filter: blur(1px);
+}
+
+.fmp-preloader__bar {
+  position: relative;
+  width: 132px;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.fmp-preloader__bar i {
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #f8a830,
+    #fbc470,
+    transparent
+  );
+  animation: fmp-bar 1.4s ease-in-out infinite;
+}
+
+@keyframes fmp-fill {
+  0% {
+    height: 0%;
+    opacity: 1;
+  }
+  55% {
+    height: 100%;
+    opacity: 1;
+  }
+  78% {
+    height: 100%;
+    opacity: 1;
+  }
+  100% {
+    height: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes fmp-logo-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes fmp-bar {
+  0% {
+    transform: translateX(-130%);
+  }
+  100% {
+    transform: translateX(320%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fmp-preloader__logo {
+    animation: none;
+  }
+  .fmp-preloader__fill {
+    height: 100%;
+    opacity: 1;
+    animation: none;
+  }
+  .fmp-preloader__fill::before {
+    display: none;
+  }
+  .fmp-preloader__bar i {
+    animation: none;
+    width: 100%;
+  }
+}
+
+/* Auto-scrolling "Moments in Motion" marquee (left → right, seamless loop). */
+@keyframes fmp-marquee {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.fmp-marquee-track {
+  animation: fmp-marquee var(--fmp-marquee-duration, 55s) linear infinite;
+  will-change: transform;
+}
+
+/* Pause on hover so users can aim at a clip. */
+.fmp-marquee:hover .fmp-marquee-track {
+  animation-play-state: paused;
+}
+
+/* Soft fade at both edges. */
+.fmp-marquee-fade {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 6%,
+    #000 94%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 6%,
+    #000 94%,
+    transparent
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fmp-marquee-track {
+    animation: none;
+    transform: none;
+  }
+}
